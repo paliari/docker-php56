@@ -8,7 +8,7 @@ RUN apt-get update && apt-get -y install wget curl vim apt-transport-https lsb-r
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
 RUN apt-get update && apt-get -y install php5.6 php5.6-curl php5.6-gd php5.6-json php5.6-mbstring \
-    php5.6-mcrypt php5.6-mysql php5.6-soap php5.6-zip
+    php5.6-mcrypt php5.6-mysql php5.6-soap php5.6-zip php5.6-xml
 
 RUN sed -i "s#short_open_tag = Off#short_open_tag = On#" /etc/php/5.6/cli/php.ini
 RUN ln -sf /etc/php/5.6/cli/php.ini /etc/php/5.6/apache2/php.ini
