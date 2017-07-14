@@ -11,6 +11,10 @@ RUN apt-get update && apt-get -y install php5.6 php5.6-curl php5.6-gd php5.6-jso
     php5.6-mcrypt php5.6-mysql php5.6-soap php5.6-zip php5.6-xml
 
 RUN sed -i "s#short_open_tag = Off#short_open_tag = On#" /etc/php/5.6/cli/php.ini
+RUN sed -i "s#display_errors = Off#display_errors = On#" /etc/php/5.6/cli/php.ini
+RUN sed -i "s#upload_max_filesize = 2M#upload_max_filesize = 50M#" /etc/php/5.6/cli/php.ini
+RUN sed -i "s#post_max_size = 8M#post_max_size = 50M#" /etc/php/5.6/cli/php.ini
+RUN sed -i "s#;date.timezone =#date.timezone = America/Sao_Paulo#" /etc/php/5.6/cli/php.ini
 RUN ln -sf /etc/php/5.6/cli/php.ini /etc/php/5.6/apache2/php.ini
 RUN printf "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN sed -i "s#DirectoryIndex.*#DirectoryIndex\ index.html\ index.php\ index.xhtml\ index.htm#" /etc/apache2/mods-enabled/dir.conf
